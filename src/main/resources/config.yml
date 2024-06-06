@@ -1,0 +1,19 @@
+#
+# Database connection is required for now!
+# Any LenFeature module that needs a database will use this
+database:
+  ip: 127.0.0.1
+  port: 3306
+  username: "Len"
+  password: "this-is-a-secret"
+  databaseName: "len"
+  maxPoolSize: 1000
+
+
+
+
+
+
+
+# !!! DO NOT CHANGE THIS UNLESS YOU KNOW WHAT YOU'RE DOING !!!
+config-version: 1
