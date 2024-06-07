@@ -2,11 +2,7 @@ package eu.lenithia.lenroot.other;
 
 public enum Messages {
 
-    // Stash
-    STASH_USE("stash.use"),
-    STASH_ADMIN("stash.admin"),
-
-    // Economy
+    NOPERMISSION(""),
 
 
     ;

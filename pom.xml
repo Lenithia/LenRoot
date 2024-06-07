@@ -27,26 +27,59 @@
           <target>${java.version}</target>
         </configuration>
       </plugin>
+
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-shade-plugin</artifactId>
-        <version>3.2.4</version>
+        <version>3.6.0</version>
         <executions>
-          <execution>
-            <phase>package</phase>
-            <goals>
-              <goal>shade</goal>
-            </goals>
-          </execution>
+              <execution>
+                  <id>shade</id>
+                  <phase>package</phase>
+                  <goals>
+                      <goal>shade</goal>
+                  </goals>
+              </execution>
         </executions>
+        <configuration>
+          <filters>
+            <filter>
+              <artifact>*:*</artifact>
+              <excludes>
+                <exclude>META-INF/*.MF</exclude>
+              </excludes>
+            </filter>
+          </filters>
+          <relocations>
+            <relocation>
+              <pattern>org.bstats</pattern>
+              <shadedPattern>eu.lenithia.libs.bstats</shadedPattern>
+            </relocation>
+            <relocation>
+              <pattern>de.tr7zw.changeme.nbtapi</pattern>
+              <shadedPattern>eu.lenithia.libs.nbtapi</shadedPattern>
+            </relocation>
+            <relocation>
+              <pattern>dev.dejvokep.boostedyaml</pattern>
+              <shadedPattern>eu.lenithia.libs.boostedyaml</shadedPattern>
+            </relocation>
+            <relocation>
+              <pattern>dev.triumphteam.gui</pattern>
+              <shadedPattern>eu.lenithia.libs.gui</shadedPattern>
+            </relocation>
+          </relocations>
+        </configuration>
       </plugin>
+
     </plugins>
+
     <resources>
       <resource>
         <directory>src/main/resources</directory>
         <filtering>true</filtering>
       </resource>
     </resources>
+
   </build>
 
   <repositories>
@@ -90,7 +123,7 @@
       <dependency>
           <groupId>org.projectlombok</groupId>
           <artifactId>lombok</artifactId>
-          <version>1.18.30</version>
+          <version>1.18.32</version>
           <scope>compile</scope>
       </dependency>
 
@@ -110,6 +143,13 @@
           <groupId>dev.triumphteam</groupId>
           <artifactId>triumph-gui</artifactId>
           <version>3.1.9</version>
+      </dependency>
+
+      <dependency>
+          <groupId>org.bstats</groupId>
+          <artifactId>bstats-bukkit</artifactId>
+          <version>3.0.2</version>
+          <scope>compile</scope>
       </dependency>
 
   </dependencies>

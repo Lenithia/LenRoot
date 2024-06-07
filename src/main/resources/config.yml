@@ -7,13 +7,34 @@ database:
   username: "Len"
   password: "this-is-a-secret"
   databaseName: "len"
-  maxPoolSize: 1000
+  maxPoolSize: 1500
 
+built-in-lenFeatures:
+  economy: true
+  leveling: true
 
+StackManager:
+  # Stash settings - stash is used when player's inventory is full
+  stash:
+    enabled: true
+    # this is the time when a stashed item will be deleted/expired in minutes
+    delete-time: 43200
 
+MailSystem:
+  enabled: true
+  gui-template: "mail"
 
+Leveling:
+  curve:
+    - 100
+    - 200
+    - 300
+    - 400
 
-
+Economy:
+  currency-list:
+    # TODO: make syntax for items
+    currency1: "type"
 
 # !!! DO NOT CHANGE THIS UNLESS YOU KNOW WHAT YOU'RE DOING !!!
 config-version: 1

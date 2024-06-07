@@ -12,3 +12,7 @@ commands:
     description: "Main command for LenRoot"
     usage: "/len <arg>"
     aliases: [lenroot, LenRoo]
+
+  testkokot:
+    description: "Test command for LenRoot"
+    usage: "/testkokot <arg>"

@@ -1,7 +1,6 @@
 package eu.lenithia.lenroot.commands;
 
 import eu.lenithia.lenroot.LenRoot;
-import eu.lenithia.lenroot.api.LenFeatureAPI;
 import eu.lenithia.lenroot.features.LenFeature;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -13,11 +12,29 @@ import java.util.List;
 
 public class Len implements TabExecutor {
 
-    LenRoot instance;
+    LenRoot lenRoot;
 
     public Len(LenRoot instance) {
-        this.instance = instance;
+        this.lenRoot = instance;
     }
+
+    /*
+
+    len
+
+    len help
+
+    len gui ??
+
+    len load <module>
+    len unload <module>
+    len register <module>
+    len unregister <module>
+    len reload <module>
+
+
+     */
+
 
     @Override
     public boolean onCommand(@NotNull CommandSender commandSender, @NotNull Command command, @NotNull String s, @NotNull String[] strings) {
@@ -32,9 +49,9 @@ public class Len implements TabExecutor {
     }
 
     public void load(CommandSender sender ,String name) {
-        LenFeature feature = instance.getLenFeatureAPI().getLenFeature(name);
+        LenFeature feature = lenRoot.getLenFeatureAPI().getLenFeature(name);
         if (feature != null) {
-            instance.getLenFeatureAPI().load(feature);
+            lenRoot.getLenFeatureAPI().load(feature);
             sender.sendMessage("LenFeature " + name + " was loaded!");
         }
     }

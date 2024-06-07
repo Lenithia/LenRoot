@@ -2,11 +2,16 @@ package eu.lenithia.lenroot.other;
 
 public enum Permissions {
 
-    // Stash
-    STASH_USE("stash.use"),
-    STASH_ADMIN("stash.admin"),
+    LEN_HELP("command.help"),
+    LEN_GUI("command.gui"),
 
-    // Economy
+    LEN_LOAD("command.load"),
+    LEN_UNLOAD("command.unload"),
+
+    LEN_REGISTER("command.register"),
+    LEN_UNREGISTER("command.unregister"),
+
+    LEN_RELOAD("command.reload"),
 
 
     ;
@@ -18,6 +23,6 @@ public enum Permissions {
     }
 
     public String get(){
-        return "len.core." + permission;
+        return "len.root." + permission;
     }
 }

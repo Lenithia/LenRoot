@@ -23,15 +23,44 @@
       </plugin>
       <plugin>
         <artifactId>maven-shade-plugin</artifactId>
-        <version>3.2.4</version>
+        <version>3.6.0</version>
         <executions>
           <execution>
+            <id>shade</id>
             <phase>package</phase>
             <goals>
               <goal>shade</goal>
             </goals>
           </execution>
         </executions>
+        <configuration>
+          <filters>
+            <filter>
+              <artifact>*:*</artifact>
+              <excludes>
+                <exclude>META-INF/*.MF</exclude>
+              </excludes>
+            </filter>
+          </filters>
+          <relocations>
+            <relocation>
+              <pattern>org.bstats</pattern>
+              <shadedPattern>eu.lenithia.libs.bstats</shadedPattern>
+            </relocation>
+            <relocation>
+              <pattern>de.tr7zw.changeme.nbtapi</pattern>
+              <shadedPattern>eu.lenithia.libs.nbtapi</shadedPattern>
+            </relocation>
+            <relocation>
+              <pattern>dev.dejvokep.boostedyaml</pattern>
+              <shadedPattern>eu.lenithia.libs.boostedyaml</shadedPattern>
+            </relocation>
+            <relocation>
+              <pattern>dev.triumphteam.gui</pattern>
+              <shadedPattern>eu.lenithia.libs.gui</shadedPattern>
+            </relocation>
+          </relocations>
+        </configuration>
       </plugin>
     </plugins>
   </build>

@@ -1,6 +1,7 @@
 package eu.lenithia.lenroot.features.helloworld;
 
 import eu.lenithia.lenroot.features.LenFeature;
+import eu.lenithia.lenroot.features.stackmanager.StackManager;
 
 public class HelloWorld extends LenFeature {
 
@@ -15,9 +16,17 @@ public class HelloWorld extends LenFeature {
         lenRoot.getLogger().info(getPrefix() + "Hello World");
         lenRoot.getLogger().info(getPrefix() + getName());
 
-        lenRoot.getLenFeatureAPI().getLenFeature("kokot");
+        //lenRoot.getLenFeatureAPI().getLenFeature("kokot");
 
         test();
+
+        LenFeature testFeature = lenRoot.getLenFeatureAPI().getLenFeature("StackManager");
+        if (testFeature instanceof StackManager) {
+
+            StackManager stackManager = (StackManager) testFeature;
+            stackManager.test();
+        }
+
     }
 
     @Override

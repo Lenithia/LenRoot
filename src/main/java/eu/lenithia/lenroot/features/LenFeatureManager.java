@@ -1,7 +1,10 @@
 package eu.lenithia.lenroot.features;
 
 import eu.lenithia.lenroot.LenRoot;
+import eu.lenithia.lenroot.features.economy.Economy;
 import eu.lenithia.lenroot.features.helloworld.HelloWorld;
+import eu.lenithia.lenroot.features.leveling.Leveling;
+import eu.lenithia.lenroot.features.stackmanager.StackManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +17,6 @@ public class LenFeatureManager {
 
     public LenFeatureManager(LenRoot instance) {
         this.instance = instance;
-        registerBuiltInFeatures();
     }
 
 
@@ -33,8 +35,13 @@ public class LenFeatureManager {
 
 
     public void load(LenFeature feature) {
-        instance.getLogger().info("Loading LenFeature: " + feature.getName());
-        feature.setEnabled(true, true);
+        try {
+            instance.getLogger().info("Loading LenFeature: " + feature.getName());
+            feature.setEnabled(true, true);
+        } catch (Exception e) {
+            feature.setEnabled(false, false);
+            throw new RuntimeException(e);
+        }
     }
 
     public void unload(LenFeature feature) {
@@ -54,11 +61,25 @@ public class LenFeatureManager {
         return features;
     }
 
+    public void unregisterAllFeatures() {
+        List<LenFeature> featuresCopy = new ArrayList<>(features);
+        for (LenFeature feature : featuresCopy) {
+            unregister(feature);
+        }
+    }
 
 
-    private void registerBuiltInFeatures(){
+    public void registerBuiltInFeatures(){
         instance.getLogger().info("Registering built-in LenFeatures!");
+
+        register(new StackManager());
+
+        register(new Leveling());
+
+        register(new Economy());
+
         register(new HelloWorld());
     }
+
 
 }

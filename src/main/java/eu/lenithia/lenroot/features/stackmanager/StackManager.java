@@ -26,4 +26,9 @@ public class StackManager extends LenFeature {
     public void reload() {
 
     }
+
+    public void test() {
+        System.out.println("StackManager test");
+    }
+
 }

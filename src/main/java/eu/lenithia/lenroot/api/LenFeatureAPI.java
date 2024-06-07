@@ -60,4 +60,10 @@ public class LenFeatureAPI {
      */
     public void reload(LenFeature feature) throws IOException { feature.reload(); }
 
+    /**
+     * Scary shit to use. Good thing for LenFeature modules intended to troll server owners.
+     */
+    public void unregisterAllFeatures() { lenFeatureManager.unregisterAllFeatures(); }
+
+
 }
