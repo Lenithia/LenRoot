@@ -13,7 +13,7 @@ public class DatabaseManager {
 
     private final LenRoot lenRoot;
 
-    private YamlDocument config;
+    private final YamlDocument config;
 
     public DatabaseManager(LenRoot lenRoot) {
         this.lenRoot = lenRoot;
@@ -48,7 +48,7 @@ public class DatabaseManager {
         return hikariConfig;
     }
 
-    public void initializeDatabase() throws IOException {
+    public void initializeDatabase() {
          try {
              HikariConfig hikariConfig = setupDatabase();
              dataSource = new HikariDataSource(hikariConfig);

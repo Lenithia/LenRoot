@@ -21,9 +21,8 @@ public class HelloWorld extends LenFeature {
         test();
 
         LenFeature testFeature = lenRoot.getLenFeatureAPI().getLenFeature("StackManager");
-        if (testFeature instanceof StackManager) {
+        if (testFeature instanceof StackManager stackManager) {
 
-            StackManager stackManager = (StackManager) testFeature;
             stackManager.test();
         }
 

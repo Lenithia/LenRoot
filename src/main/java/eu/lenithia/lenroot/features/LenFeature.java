@@ -4,37 +4,33 @@ import eu.lenithia.lenroot.LenRoot;
 import lombok.Getter;
 import lombok.Setter;
 
+@Getter
 public abstract class LenFeature {
 
     /**
      * name of the LenFeature module, IT MUST BE UNIQUE!!!
      */
-    @Getter
     protected String name;
 
     /**
      * prefix for console, so you know which module is printing what.
      */
-    @Getter
     protected String prefix;
 
     /**
      * LenFeature module version, intended for checking compatibility with other LenFeature modules.
      */
-    @Getter
     protected String version;
 
     /**
      * State of LenFeature module, intended for checking if the LenFeature module can be used by other LenFeature modules.
      */
-    @Getter
     protected boolean enabled = false;
 
     /**
      * Instance of LenRoot should be here, used easy access.
      */
     @Setter
-    @Getter
     protected LenRoot lenRoot;
 
 

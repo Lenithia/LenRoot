@@ -51,6 +51,7 @@ public final class LenRoot extends JavaPlugin {
         // Starting database
         DatabaseManager databaseManager = new DatabaseManager(this);
         databaseAPI = new DatabaseAPI(databaseManager);
+        databaseAPI.startDatabase();
 
         // Staring LenFeatures
         LenFeatureManager lenFeatureManager = new LenFeatureManager(this);

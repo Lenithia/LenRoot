@@ -5,6 +5,7 @@ import eu.lenithia.lenroot.features.economy.Economy;
 import eu.lenithia.lenroot.features.helloworld.HelloWorld;
 import eu.lenithia.lenroot.features.leveling.Leveling;
 import eu.lenithia.lenroot.features.stackmanager.StackManager;
+import eu.lenithia.lenroot.features.visualcohesion.VisualCohesion;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,7 +41,8 @@ public class LenFeatureManager {
             feature.setEnabled(true, true);
         } catch (Exception e) {
             feature.setEnabled(false, false);
-            throw new RuntimeException(e);
+            instance.getLogger().severe("Failed to load LenFeature: " + feature.getName());
+            instance.getLogger().severe(e.getMessage());
         }
     }
 
@@ -73,6 +75,8 @@ public class LenFeatureManager {
         instance.getLogger().info("Registering built-in LenFeatures!");
 
         register(new StackManager());
+
+        register(new VisualCohesion());
 
         register(new Leveling());
 
