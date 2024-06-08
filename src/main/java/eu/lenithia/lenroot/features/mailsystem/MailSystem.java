@@ -8,6 +8,8 @@ public class MailSystem extends LenFeature {
         this.name = "MailSystem";
         this.version = "1.0.0";
         this.prefix = "[" + getName() + "] ";
+        this.description = "A mail system for your server!";
+
     }
 
     @Override
