@@ -4,6 +4,8 @@ import eu.lenithia.lenroot.LenRoot;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.List;
+
 @Getter
 public abstract class LenFeature {
 
@@ -21,6 +23,16 @@ public abstract class LenFeature {
      * LenFeature module version, intended for checking compatibility with other LenFeature modules.
      */
     protected String version;
+
+    /**
+     * Description of the LenFeature module, intended for showing in help command.
+     */
+    protected String description;
+
+    /**
+     * List of authors of the LenFeature module, intended for showing in help command.
+     */
+    protected List<String> authors;
 
     /**
      * State of LenFeature module, intended for checking if the LenFeature module can be used by other LenFeature modules.

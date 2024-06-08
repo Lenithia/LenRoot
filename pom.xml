@@ -104,6 +104,11 @@
           <layout>default</layout>
       </repository>
 
+      <repository>
+          <id>placeholderapi</id>
+          <url>https://repo.extendedclip.com/content/repositories/placeholderapi/</url>
+      </repository>
+
   </repositories>
 
   <dependencies>
@@ -150,6 +155,45 @@
           <artifactId>bstats-bukkit</artifactId>
           <version>3.0.2</version>
           <scope>compile</scope>
+      </dependency>
+
+      <dependency>
+          <groupId>me.clip</groupId>
+          <artifactId>placeholderapi</artifactId>
+          <version>2.11.6</version>
+          <scope>provided</scope>
+      </dependency>
+
+      <dependency>
+          <groupId>com.github.Slimefun</groupId>
+          <artifactId>Slimefun4</artifactId>
+          <version>RC-28</version>
+          <scope>provided</scope>
+          <exclusions>
+              <exclusion>
+                  <groupId>io.github.baked-libs</groupId>
+                  <artifactId>dough-api</artifactId>
+              </exclusion>
+          </exclusions>
+      </dependency>
+      <dependency>
+          <groupId>com.github.LoneDev6</groupId>
+          <artifactId>api-itemsadder</artifactId>
+          <version>3.6.2-beta-r3-b</version>
+          <scope>provided</scope>
+      </dependency>
+      <dependency>
+          <groupId>io.lumine</groupId>
+          <artifactId>MythicLib-dist</artifactId>
+          <version>1.6.2-SNAPSHOT</version>
+          <scope>provided</scope>
+          <optional>true</optional>
+      </dependency>
+      <dependency>
+          <groupId>net.Indyuce</groupId>
+          <artifactId>MMOItems-API</artifactId>
+          <version>6.9.5-SNAPSHOT</version>
+          <scope>provided</scope>
       </dependency>
 
   </dependencies>

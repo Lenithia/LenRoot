@@ -2,6 +2,7 @@ package eu.lenithia.lenroot.api;
 
 import dev.dejvokep.boostedyaml.YamlDocument;
 import eu.lenithia.lenroot.other.ConfigManager;
+import org.yaml.snakeyaml.Yaml;
 
 import java.io.File;
 import java.io.IOException;
@@ -20,6 +21,12 @@ public class ConfigAPI {
      * @return config.yml of LenRoot
      */
     public YamlDocument getConfig() { return configManager.getConfig(); }
+
+    /** Getter for the messages file.
+     *
+     * @return messages.yml of LenRoot
+     */
+    public YamlDocument getMessages() { return configManager.getMessages(); }
 
     /** Initializes a config file of your choice.
      *

@@ -67,14 +67,15 @@ public class DatabaseManager {
         }
     }
 
-    public Connection getConnection() throws SQLException {
+    public Connection getConnection() {
         try {
             return dataSource.getConnection();
         } catch (SQLException e) {
             lenRoot.getLogger().severe("Failed to get connection from the pool.");
             lenRoot.getServer().getPluginManager().disablePlugin(lenRoot);
-            throw e;
         }
+
+        return null;
     }
 
 

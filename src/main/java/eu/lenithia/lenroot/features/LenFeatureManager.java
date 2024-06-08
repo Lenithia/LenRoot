@@ -8,28 +8,31 @@ import eu.lenithia.lenroot.features.stackmanager.StackManager;
 import eu.lenithia.lenroot.features.visualcohesion.VisualCohesion;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class LenFeatureManager {
 
-    private final LenRoot instance;
+    private final LenRoot lenRoot;
 
     public static List<LenFeature> features = new ArrayList<>();
 
-    public LenFeatureManager(LenRoot instance) {
-        this.instance = instance;
+    public LenFeatureManager(LenRoot lenRoot) {
+        this.lenRoot = lenRoot;
     }
 
 
-    public void register(LenFeature feature) {
-        instance.getLogger().info("Registering LenFeature: " + feature.getName());
-        features.add(feature);
-        feature.setLenRoot(instance);
-        load(feature);
+    public void register(LenFeature... features) {
+        Arrays.stream(features).forEach(feature -> {
+            lenRoot.getLogger().info("Registering LenFeature: " + feature.getName());
+            LenFeatureManager.features.add(feature);
+            feature.setLenRoot(lenRoot);
+            load(feature);
+        });
     }
 
     public void unregister(LenFeature feature) {
-        instance.getLogger().info("Unregistering LenFeature: " + feature.getName());
+        lenRoot.getLogger().info("Unregistering LenFeature: " + feature.getName());
         unload(feature);
         features.remove(feature);
     }
@@ -37,17 +40,17 @@ public class LenFeatureManager {
 
     public void load(LenFeature feature) {
         try {
-            instance.getLogger().info("Loading LenFeature: " + feature.getName());
+            lenRoot.getLogger().info("Loading LenFeature: " + feature.getName());
             feature.setEnabled(true, true);
         } catch (Exception e) {
             feature.setEnabled(false, false);
-            instance.getLogger().severe("Failed to load LenFeature: " + feature.getName());
-            instance.getLogger().severe(e.getMessage());
+            lenRoot.getLogger().severe("Failed to load LenFeature: " + feature.getName());
+            lenRoot.getLogger().severe(e.getMessage());
         }
     }
 
     public void unload(LenFeature feature) {
-        instance.getLogger().info("Unloading LenFeature: " + feature.getName());
+        lenRoot.getLogger().info("Unloading LenFeature: " + feature.getName());
         feature.setEnabled(false, true);
     }
 
@@ -65,24 +68,14 @@ public class LenFeatureManager {
 
     public void unregisterAllFeatures() {
         List<LenFeature> featuresCopy = new ArrayList<>(features);
-        for (LenFeature feature : featuresCopy) {
-            unregister(feature);
-        }
+        featuresCopy.forEach(this::unregister);
     }
 
 
     public void registerBuiltInFeatures(){
-        instance.getLogger().info("Registering built-in LenFeatures!");
+        lenRoot.getLogger().info("Registering built-in LenFeatures!");
 
-        register(new StackManager());
-
-        register(new VisualCohesion());
-
-        register(new Leveling());
-
-        register(new Economy());
-
-        register(new HelloWorld());
+        register(new StackManager(), new VisualCohesion(), new Leveling(), new Economy(), new HelloWorld());
     }
 
 

@@ -2,8 +2,7 @@ package eu.lenithia.lenroot.api;
 
 import eu.lenithia.lenroot.database.DatabaseManager;
 
-import javax.imageio.IIOException;
-import java.io.IOException;
+import java.sql.Connection;
 
 public class DatabaseAPI {
 
@@ -13,9 +12,15 @@ public class DatabaseAPI {
         this.databaseManager = databaseManager;
     }
 
-    public void startDatabase() {
-        databaseManager.initializeDatabase();
-    }
+    /**
+     * Starts the database.
+     */
+    public void startDatabase() { databaseManager.initializeDatabase(); }
 
+    /** Get connection to the database.
+     * 
+     * @return Connection to the database.
+     */
+    public Connection getConnection() { return databaseManager.getConnection(); }
 
 }

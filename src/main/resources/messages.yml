@@ -1,7 +1,7 @@
 
 LenRoot:
-  no_permission: "&cYou don't have permission to do that!"
-
+  prefix: "<gray>[<light_purple>LenRoot<light_purple>] > "
+  no_permission: "<red>You don't have permission to do that!"
 
 
 
