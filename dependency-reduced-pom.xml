@@ -4,7 +4,7 @@
   <groupId>eu.lenithia</groupId>
   <artifactId>LenRoot</artifactId>
   <name>LenRoot</name>
-  <version>0</version>
+  <version>0.1-SNAPSHOT</version>
   <build>
     <resources>
       <resource>
@@ -23,7 +23,7 @@
       </plugin>
       <plugin>
         <artifactId>maven-shade-plugin</artifactId>
-        <version>3.6.0</version>
+        <version>3.5.3</version>
         <executions>
           <execution>
             <id>shade</id>
@@ -86,9 +86,8 @@
       <url>https://repo.extendedclip.com/content/repositories/placeholderapi/</url>
     </repository>
     <repository>
-      <snapshots />
-      <id>github</id>
-      <url>https://maven.pkg.github.com/GameDreamsEU/GD-Core</url>
+      <id>phoenix</id>
+      <url>https://nexus.phoenixdevt.fr/repository/maven-public/</url>
     </repository>
   </repositories>
   <dependencies>
@@ -135,15 +134,10 @@
       <version>6.9.5-SNAPSHOT</version>
       <scope>provided</scope>
     </dependency>
-    <dependency>
-      <groupId>eu.gamedreams</groupId>
-      <artifactId>gd-core</artifactId>
-      <version>1.0</version>
-      <scope>provided</scope>
-    </dependency>
   </dependencies>
   <properties>
     <java.version>21</java.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <jar.finalName>${project.name}</jar.finalName>
   </properties>
 </project>
