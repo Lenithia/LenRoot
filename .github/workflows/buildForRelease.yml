@@ -33,6 +33,5 @@ jobs:
           generate_release_notes: true
           tag_name: "lenroot-build"
           prerelease: false
-          name: "LenRoot Build"
           files: |
-            /home/runner/work/lenroot/lenroot/target/LenRoot.jar
+            /home/runner/work/LenRoot/LenRoot/target/LenRoot.jar
