@@ -202,6 +202,11 @@
           <scope>provided</scope>
       </dependency>
 
+      <dependency>
+          <groupId>com.github.Lenithia</groupId>
+          <artifactId>LenRoot</artifactId>
+          <version>lenroot-build</version>
+      </dependency>
 
   </dependencies>
 </project>
