@@ -12,6 +12,7 @@
         <directory>src/main/resources</directory>
       </resource>
     </resources>
+    <finalName>${project.name}</finalName>
     <plugins>
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
@@ -23,7 +24,7 @@
       </plugin>
       <plugin>
         <artifactId>maven-shade-plugin</artifactId>
-        <version>3.5.3</version>
+        <version>3.6.0</version>
         <executions>
           <execution>
             <id>shade</id>
@@ -138,6 +139,5 @@
   <properties>
     <java.version>21</java.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <jar.finalName>${project.name}</jar.finalName>
   </properties>
 </project>

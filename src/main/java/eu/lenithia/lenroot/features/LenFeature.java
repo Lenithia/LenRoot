@@ -4,6 +4,7 @@ import eu.lenithia.lenroot.LenRoot;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -32,7 +33,7 @@ public abstract class LenFeature {
     /**
      * List of authors of the LenFeature module, intended for showing in help command.
      */
-    protected List<String> authors;
+    protected List<String> authors = new ArrayList<>();
 
     /**
      * State of LenFeature module, intended for checking if the LenFeature module can be used by other LenFeature modules.

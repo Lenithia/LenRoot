@@ -71,6 +71,10 @@ public final class LenRoot extends JavaPlugin {
             lenFeatureAPI.unregisterAllFeatures();
         }
 
+        if (databaseAPI != null) {
+            databaseAPI.closeConnection();
+        }
+
         getLogger().info("Plugin died :/");
 
     }

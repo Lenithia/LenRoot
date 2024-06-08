@@ -1,7 +1,5 @@
 package eu.lenithia.lenroot.other;
 
-import dev.dejvokep.boostedyaml.YamlDocument;
-import eu.lenithia.lenroot.api.ConfigAPI;
 import me.clip.placeholderapi.PlaceholderAPI;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
@@ -14,13 +12,13 @@ public class MessageUtils {
         return PlaceholderAPI.setPlaceholders(player, text);
     }
 
-    public static Component componentFromString(String text, Player player) {
+    public static Component deserialize(String text, Player player) {
         text = replacePlaceholders(text, player);
 
         return MiniMessage.miniMessage().deserialize(text);
     }
 
-    public static Component componentFromString(String text) {
+    public static Component deserialize(String text) {
         return MiniMessage.miniMessage().deserialize(text);
     }
 

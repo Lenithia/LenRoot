@@ -2,8 +2,8 @@ name: LenRoot
 version: '${project.version}'
 main: eu.lenithia.lenroot.LenRoot
 
-description: This is the root of Len!
-authors: [Len]
+description: Module manager for Len ecosystem
+author: Len
 
 api-version: '1.20'
 

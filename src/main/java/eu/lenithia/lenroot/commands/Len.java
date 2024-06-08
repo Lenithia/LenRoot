@@ -2,6 +2,10 @@ package eu.lenithia.lenroot.commands;
 
 import eu.lenithia.lenroot.LenRoot;
 import eu.lenithia.lenroot.features.LenFeature;
+import eu.lenithia.lenroot.other.MessageUtils;
+import io.papermc.paper.plugin.configuration.PluginMeta;
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.TextComponent;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabExecutor;
@@ -39,6 +43,10 @@ public class Len implements TabExecutor {
     @Override
     public boolean onCommand(@NotNull CommandSender commandSender, @NotNull Command command, @NotNull String s, @NotNull String[] args) {
 
+        if (args.length == 0) {
+            commandSender.sendMessage(plInfo());
+            return true;
+        }
 
 
         return true;
@@ -49,7 +57,7 @@ public class Len implements TabExecutor {
         return List.of();
     }
 
-    public void load(CommandSender sender ,String name) {
+    private void load(CommandSender sender ,String name) {
         LenFeature feature = lenRoot.getLenFeatureAPI().getLenFeature(name);
         if (feature != null) {
             lenRoot.getLenFeatureAPI().load(feature);
@@ -57,7 +65,36 @@ public class Len implements TabExecutor {
         }
     }
 
+    private Component plInfo() {
 
+        PluginMeta pluginMeta = lenRoot.getPluginMeta();
+
+        String pluginName = pluginMeta.getName();
+        String pluginDescription = pluginMeta.getDescription();
+        List<String> pluginAuthors = pluginMeta.getAuthors();
+        String pluginVersion = pluginMeta.getVersion();
+
+        TextComponent.Builder component = Component.text()
+                .append(MessageUtils.deserialize("<gradient:#ea76f5:#ed9ff5><strikethrough>                                                                                 "))
+                .appendNewline()
+                .appendNewline()
+                .append(MessageUtils.deserialize("   <#ea76f5>" + pluginName ))
+                .appendNewline()
+                .appendNewline()
+                .append(MessageUtils.deserialize("<#ea76f5>   Description: <#ffffff>" + pluginDescription ))
+                .appendNewline()
+                .append(MessageUtils.deserialize(String.format("<#ea76f5>   Authors: <#ffffff>%s", String.join("<#9bd7fa>,<#3690fa> ", pluginAuthors))))
+                .appendNewline()
+                .append(MessageUtils.deserialize("<#ea76f5>   Version: <#ffffff>" + pluginVersion ))
+                .appendNewline()
+                .appendNewline()
+                .append(MessageUtils.deserialize("<#ea76f5>   Help command: <#ffffff><hover:show_text:'<#ea76f5>click to execute!'><click:run_command:len help>/len help</click></hover>" ))
+                .appendNewline()
+                .appendNewline()
+                .append(MessageUtils.deserialize("<gradient:#ea76f5:#ed9ff5><strikethrough>                                                                                 "))
+                ;
+        return component.build();
+    }
 
 
 }

@@ -23,4 +23,9 @@ public class DatabaseAPI {
      */
     public Connection getConnection() { return databaseManager.getConnection(); }
 
+    /**
+     * Closes the connection to the database.
+     */
+    public void closeConnection() { databaseManager.closeDatabase(); }
+
 }
