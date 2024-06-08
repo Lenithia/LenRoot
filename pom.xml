@@ -6,7 +6,7 @@
 
   <groupId>eu.lenithia</groupId>
   <artifactId>LenRoot</artifactId>
-  <version>0</version>
+  <version>0.1-SNAPSHOT</version>
   <packaging>jar</packaging>
 
   <name>LenRoot</name>
@@ -107,6 +107,11 @@
       <repository>
           <id>placeholderapi</id>
           <url>https://repo.extendedclip.com/content/repositories/placeholderapi/</url>
+      </repository>
+
+      <repository>
+          <id>phoenix</id>
+          <url>https://nexus.phoenixdevt.fr/repository/maven-public/</url>
       </repository>
 
   </repositories>
