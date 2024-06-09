@@ -14,6 +14,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.sql.Time;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.UUID;
 
@@ -55,6 +56,9 @@ public class Len implements TabExecutor {
                 case "help":
                     commandSender.sendMessage(help());
                     break;
+                case "active":
+                    commandSender.sendMessage(active());
+                    break;
                 case "load":
                     if (args.length == 2) {
                         load(commandSender, args[1]);
@@ -76,6 +80,8 @@ public class Len implements TabExecutor {
                         commandSender.sendMessage("<red> Invalid usage. Use /len reload <module>");
                     }
                     break;
+
+
 
                 // TODO: Implement these commands (register & unregister)
                 case "register":
@@ -120,7 +126,7 @@ public class Len implements TabExecutor {
                 .append(MessageUtils.deserialize("<#ea76f5>   Version: <#ffffff>" + pluginVersion ))
                 .appendNewline()
                 .appendNewline()
-                .append(MessageUtils.deserialize("<#ea76f5>   Help command: <#ffffff><hover:show_text:'<#ea76f5>Click to execute!'><click:suggest_command:len help>/len help</click></hover>" ))
+                .append(MessageUtils.deserialize("<#ea76f5>   Help command: <#ffffff><hover:show_text:'<#ea76f5>Click to execute!'><click:suggest_command:/len help>/len help</click></hover>" ))
                 .appendNewline()
                 .append(MessageUtils.deserialize("<gradient:#ea76f5:#ed9ff5><strikethrough>                                                                                "))
                 ;
@@ -133,6 +139,8 @@ public class Len implements TabExecutor {
                 .appendNewline()
                 .append(MessageUtils.deserialize("<#ea76f5>   /len help: <#ffffff> Shows this help message."))
                 .appendNewline()
+                .append(MessageUtils.deserialize("<#ea76f5>   /len active: <#ffffff> Shows currently active modules."))
+                .appendNewline()
                 .append(MessageUtils.deserialize("<#ea76f5>   /len load <module>: <#ffffff> Loads a module."))
                 .appendNewline()
                 .append(MessageUtils.deserialize("<#ea76f5>   /len unload <module>: <#ffffff> Unloads a module."))
@@ -141,6 +149,23 @@ public class Len implements TabExecutor {
                 .appendNewline()
                 .append(MessageUtils.deserialize("<gradient:#ea76f5:#ed9ff5><strikethrough>                                                                                "))
                 ;
+        return component.build();
+    }
+
+    private Component active() {
+        TextComponent.Builder component = Component.text()
+                .append(MessageUtils.deserialize("<gradient:#ea76f5:#ed9ff5><strikethrough>                                                                                "))
+                .appendNewline()
+                ;
+
+        for (LenFeature feature : lenRoot.getLenFeatureAPI().getRegisteredLenFeatures()) {
+            String status = feature.isEnabled() ? "<green>enabled" : "<red>disabled";
+            component.append(MessageUtils.deserialize("<#ea76f5>   " + feature.getName() + "<#ffffff>: " + status));
+            component.appendNewline();
+        }
+
+        component.append(MessageUtils.deserialize("<gradient:#ea76f5:#ed9ff5><strikethrough>                                                                                "));
+
         return component.build();
     }
 
@@ -176,5 +201,7 @@ public class Len implements TabExecutor {
             sender.sendMessage(MessageUtils.deserialize("<#ffffff> LenFeature <#ea76f5>" + name + "<#ffffff> was reloaded!"));
         }
     }
+
+
 
 }

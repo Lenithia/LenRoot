@@ -75,7 +75,8 @@ public class LenFeatureManager {
     public void registerBuiltInFeatures(){
         lenRoot.getLogger().info("Registering built-in LenFeatures!");
 
-        register(new StackManager(), new VisualCohesion(), new Leveling(), new Economy(), new HelloWorld());
+        // new StackManager(), new VisualCohesion(), new Leveling(), new Economy(), new HelloWorld()
+        register(new StackManager(), new HelloWorld());
     }
 
 
