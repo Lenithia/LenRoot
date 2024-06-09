@@ -3,12 +3,14 @@ package eu.lenithia.lenroot.commands;
 import eu.lenithia.lenroot.LenRoot;
 import eu.lenithia.lenroot.features.LenFeature;
 import eu.lenithia.lenroot.other.MessageUtils;
+import eu.lenithia.lenroot.other.Permissions;
 import io.papermc.paper.plugin.configuration.PluginMeta;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.TextComponent;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabExecutor;
+import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -43,41 +45,52 @@ public class Len implements TabExecutor {
 
      */
 
+    // TODO: make this class nicer to look at
+
     private static HashMap<UUID, Time> confirm = new HashMap<>();
 
     @Override
-    public boolean onCommand(@NotNull CommandSender commandSender, @NotNull Command command, @NotNull String s, @NotNull String[] args) {
+    public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String s, @NotNull String[] args) {
 
         if (args.length == 0) {
-            commandSender.sendMessage(plInfo());
+            sender.sendMessage(plInfo());
             return true;
         } else {
             switch (args[0]) {
                 case "help":
-                    commandSender.sendMessage(help());
+                    sender.sendMessage(help());
                     break;
                 case "active":
-                    commandSender.sendMessage(active());
+                    if (sender instanceof Player p) {
+                        if (p.hasPermission(Permissions.LEN_ACTIVE.get())) {
+                            sender.sendMessage(active());
+                            lenRoot.getComponentLogger().info(active());
+                        } else {
+                            sender.sendMessage(MessageUtils.deserialize("<red> You do not have permission to use this command."));
+                        }
+                    } else {
+                        sender.sendMessage(active());
+                    }
                     break;
                 case "load":
                     if (args.length == 2) {
-                        load(commandSender, args[1]);
+                        load(sender, args[1]);
                     } else {
-                        commandSender.sendMessage("<red> Invalid usage. Use /len load <module>");
+                        sender.sendMessage("<red> Invalid usage. Use /len load <module>");
                     }
                     break;
                 case "unload":
                     if (args.length == 2) {
-                        unload(commandSender, args[1]);
+                        unload(sender, args[1]);
                     } else {
-                        commandSender.sendMessage("<red> Invalid usage. Use /len unload <module>");
+                        sender.sendMessage("<red> Invalid usage. Use /len unload <module>");
                     }
                     break;
                 case "reload":
                     if (args.length == 2) {
-                        reload(commandSender, args[1]);
+                        reload(sender, args[1]);
                     } else {
-                        commandSender.sendMessage("<red> Invalid usage. Use /len reload <module>");
+                        sender.sendMessage("<red> Invalid usage. Use /len reload <module>");
                     }
                     break;
 
@@ -89,7 +102,7 @@ public class Len implements TabExecutor {
                 case "unregister":
 
                 default:
-                    commandSender.sendMessage("<red> Unknown command. Use /len help for help.");
+                    sender.sendMessage("<red> Unknown command. Use /len help for help.");
                     break;
             }
         }

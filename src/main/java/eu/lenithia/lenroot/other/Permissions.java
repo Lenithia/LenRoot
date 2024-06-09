@@ -12,6 +12,7 @@ public enum Permissions {
     LEN_UNREGISTER("command.unregister"),
 
     LEN_RELOAD("command.reload"),
+    LEN_ACTIVE("command.active"),
 
 
     ;
