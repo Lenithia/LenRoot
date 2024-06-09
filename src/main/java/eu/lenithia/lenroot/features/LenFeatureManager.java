@@ -13,6 +13,9 @@ import java.util.List;
 
 public class LenFeatureManager {
 
+    // TODO: system with events to prevent bugs caused by disabling their dependency
+    // TODO: ability to register built-in features after being disabled
+
     private final LenRoot lenRoot;
 
     public static List<LenFeature> features = new ArrayList<>();
