@@ -7,6 +7,7 @@ import eu.lenithia.lenroot.api.LenFeatureAPI;
 import eu.lenithia.lenroot.commands.Len;
 import eu.lenithia.lenroot.database.DatabaseManager;
 import eu.lenithia.lenroot.features.LenFeatureManager;
+import eu.lenithia.lenroot.other.BStats;
 import eu.lenithia.lenroot.other.ConfigManager;
 import lombok.Getter;
 import org.bstats.bukkit.Metrics;
@@ -40,10 +41,6 @@ public final class LenRoot extends JavaPlugin {
         getLogger().info("THX for trying out LenRoot :)");
         getLogger().info(" ----------------------------- ");
 
-        // Bstats
-        int pluginId = 22166;
-        Metrics metrics = new Metrics(this, pluginId);
-
         // Starting config
         ConfigManager configManager = new ConfigManager(this);
         configAPI = new ConfigAPI(configManager);
@@ -60,6 +57,9 @@ public final class LenRoot extends JavaPlugin {
 
         // Registering command
         Objects.requireNonNull(getCommand("len")).setExecutor(new Len(this));
+
+        // Starting bStats
+        new BStats(this);
 
     }
 

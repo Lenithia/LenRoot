@@ -38,7 +38,8 @@ Economy:
 
 
 
-
+bstats:
+  enabled: true
 
 # !!! DO NOT CHANGE THIS UNLESS YOU KNOW WHAT YOU'RE DOING !!!
 config-version: 1
