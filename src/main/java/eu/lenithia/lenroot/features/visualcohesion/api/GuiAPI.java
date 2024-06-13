@@ -1,4 +1,4 @@
 package eu.lenithia.lenroot.features.visualcohesion.api;
 
-public class VisualCohesionAPI {
+public class GuiAPI {
 }

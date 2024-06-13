@@ -4,6 +4,7 @@ import eu.lenithia.lenroot.LenRoot;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -56,7 +57,11 @@ public abstract class LenFeature {
         this.enabled = enabled;
         if (load) {
             if (enabled) {
-                enable();
+                try {
+                    enable();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             } else {
                 disable();
             }
@@ -67,7 +72,7 @@ public abstract class LenFeature {
     /**
      * LenFeature module enable logic. Modify this function to run code when the LenFeature module becomes active, works similarly to onEnable() function from Bukkit.
      */
-    public abstract void enable();
+    public abstract void enable() throws IOException;
 
     /**
      * LenFeature module shutdown logic. Make sure it really disables everything that your LenFeature module is doing.
@@ -77,6 +82,13 @@ public abstract class LenFeature {
     /**
      * LenFeature module reload logic. Easiest implementation could be: disable(); enable(); but you can use it for reloading configs or whatever.
      */
-    public abstract void reload();
+    public void reload() {
+        disable();
+        try {
+            enable();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
 }

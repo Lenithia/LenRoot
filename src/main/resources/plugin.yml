@@ -14,5 +14,5 @@ commands:
     usage: "/len <arg>"
     aliases: [lenroot, LenRoot]
 
-  testkokot:
+  test:
     description: "Test command for LenRoot"

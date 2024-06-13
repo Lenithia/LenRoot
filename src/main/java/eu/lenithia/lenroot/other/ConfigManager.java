@@ -26,11 +26,9 @@ public class ConfigManager {
 
     public ConfigManager(LenRoot lenRoot) {
         this.lenRoot = lenRoot;
-        loadConfig();
-        loadMessages();
     }
 
-    private void loadConfig() {
+    public void loadConfig() {
         try {
             config = initializeConfig(lenRoot.getDataFolder(), "config", lenRoot.getResource("config.yml"));
         } catch (IOException e) {
@@ -39,7 +37,7 @@ public class ConfigManager {
         }
     }
 
-    private void loadMessages() {
+    public void loadMessages() {
         try {
             messages = initializeConfig(lenRoot.getDataFolder(), "messages", lenRoot.getResource("messages.yml"));
         } catch (IOException e) {

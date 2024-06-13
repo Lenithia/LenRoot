@@ -5,17 +5,12 @@ import eu.lenithia.lenroot.features.stackmanager.api.LenStackAPI;
 import eu.lenithia.lenroot.features.stackmanager.api.StashAPI;
 import lombok.Getter;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
+@Getter
 public class StackManager extends LenFeature {
 
-    @Getter
     private LenStackAPI lenStackAPI;
 
-    @Getter
     private StashAPI stashAPI;
 
 
@@ -48,7 +43,7 @@ public class StackManager extends LenFeature {
     }
 
     public void test() {
-        System.out.println("StackManager test");
+        lenRoot.getLogger().info("StackManager test");
     }
 
 }

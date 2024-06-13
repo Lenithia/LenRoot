@@ -10,7 +10,6 @@ import eu.lenithia.lenroot.features.LenFeatureManager;
 import eu.lenithia.lenroot.other.BStats;
 import eu.lenithia.lenroot.other.ConfigManager;
 import lombok.Getter;
-import org.bstats.bukkit.Metrics;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.Objects;
@@ -43,6 +42,8 @@ public final class LenRoot extends JavaPlugin {
 
         // Starting config
         ConfigManager configManager = new ConfigManager(this);
+        configManager.loadConfig();
+        configManager.loadMessages();
         configAPI = new ConfigAPI(configManager);
 
         // Starting database

@@ -38,14 +38,15 @@ public class Len implements TabExecutor {
 
     len load <module>
     len unload <module>
-    len register <module>
+    len register <built-in-module>
     len unregister <module>
     len reload <module>
+    len uninstall <module>
 
 
      */
 
-    // TODO: make this class nicer to look at
+    // TODO: make this class nicer to look at - rewrite the whole command
 
     private static HashMap<UUID, Time> confirm = new HashMap<>();
 

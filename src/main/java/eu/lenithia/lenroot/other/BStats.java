@@ -10,6 +10,7 @@ public class BStats {
         if (lenRoot.getConfigAPI().getConfig().getBoolean("bstats.enabled")) {
             int pluginId = 22166;
             Metrics metrics = new Metrics(lenRoot, pluginId);
+            lenRoot.getLogger().info("bStats metrics enabled.");
         }
     }
 

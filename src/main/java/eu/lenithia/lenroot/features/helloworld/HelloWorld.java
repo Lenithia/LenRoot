@@ -2,6 +2,8 @@ package eu.lenithia.lenroot.features.helloworld;
 
 import eu.lenithia.lenroot.features.LenFeature;
 import eu.lenithia.lenroot.features.stackmanager.StackManager;
+import eu.lenithia.lenroot.features.visualcohesion.VisualCohesion;
+import eu.lenithia.lenroot.other.MessageUtils;
 
 public class HelloWorld extends LenFeature {
 
@@ -13,10 +15,15 @@ public class HelloWorld extends LenFeature {
 
     @Override
     public void enable() {
-        lenRoot.getLogger().info(getPrefix() + "Hello World");
-        lenRoot.getLogger().info(getPrefix() + getName());
+        lenRoot.getLogger().info(prefix + "Hello World");
+        lenRoot.getLogger().info(prefix + getName());
 
         //lenRoot.getLenFeatureAPI().getLenFeature("kokot");
+
+        LenFeature VisualCohesion = lenRoot.getLenFeatureAPI().getLenFeature("VisualCohesion");
+        if (VisualCohesion instanceof VisualCohesion visualCohesion) {
+            lenRoot.getComponentLogger().info(MessageUtils.deserialize(prefix + visualCohesion.getColor1() + "Hello World with Visual Cohesion colors!"));
+        }
 
         test();
 
