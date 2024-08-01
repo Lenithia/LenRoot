@@ -1,13 +1,13 @@
 package eu.lenithia.lenroot.api;
 
 import dev.dejvokep.boostedyaml.YamlDocument;
-import eu.lenithia.lenroot.other.ConfigManager;
-import org.yaml.snakeyaml.Yaml;
+import eu.lenithia.lenroot.config.ConfigManager;
 
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 
+@SuppressWarnings({"unused"})
 public class ConfigAPI {
 
     ConfigManager configManager;

@@ -1,4 +1,4 @@
-package eu.lenithia.lenroot.other;
+package eu.lenithia.lenroot.config;
 
 import dev.dejvokep.boostedyaml.YamlDocument;
 import dev.dejvokep.boostedyaml.dvs.versioning.BasicVersioning;

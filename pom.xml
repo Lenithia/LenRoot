@@ -132,6 +132,17 @@
       </dependency>
 
       <dependency>
+          <groupId>org.incendo</groupId>
+          <artifactId>cloud-paper</artifactId>
+          <version>2.0.0-beta.9</version>
+      </dependency>
+      <dependency>
+          <groupId>org.incendo</groupId>
+          <artifactId>cloud-minecraft-extras</artifactId>
+          <version>2.0.0-beta.8</version>
+      </dependency>
+
+      <dependency>
           <groupId>org.projectlombok</groupId>
           <artifactId>lombok</artifactId>
           <version>1.18.32</version>
@@ -201,6 +212,8 @@
           <version>6.9.5-SNAPSHOT</version>
           <scope>provided</scope>
       </dependency>
+
+
 
   </dependencies>
 </project>

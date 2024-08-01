@@ -38,11 +38,8 @@ public class Len implements TabExecutor {
 
     len load <module>
     len unload <module>
-    len register <built-in-module>
-    len unregister <module>
     len reload <module>
     len uninstall <module>
-
 
      */
 

@@ -4,6 +4,7 @@ import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 import dev.dejvokep.boostedyaml.YamlDocument;
 import eu.lenithia.lenroot.LenRoot;
+import lombok.Getter;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -20,6 +21,7 @@ public class DatabaseManager {
         this.config = lenRoot.getConfigAPI().getConfig();
     }
 
+    @Getter
     private HikariDataSource dataSource;
 
 

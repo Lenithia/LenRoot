@@ -68,6 +68,11 @@ public class LenFeatureManager {
                 .orElse(null);
     }
 
+    public Boolean isLenFeatureRegistered(String name) {
+        return lenFeaturesList.stream()
+                .anyMatch(feature -> feature.getName().equals(name));
+    }
+
     public List<LenFeature> getRegisteredLenFeatures() {
         return lenFeaturesList;
     }

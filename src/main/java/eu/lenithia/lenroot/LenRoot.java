@@ -1,14 +1,14 @@
 package eu.lenithia.lenroot;
 
-
 import eu.lenithia.lenroot.api.ConfigAPI;
 import eu.lenithia.lenroot.api.DatabaseAPI;
 import eu.lenithia.lenroot.api.LenFeatureAPI;
-import eu.lenithia.lenroot.commands.Len;
+import eu.lenithia.lenroot.commands.CommandManager;
+import eu.lenithia.lenroot.commands.LenCommand;
 import eu.lenithia.lenroot.database.DatabaseManager;
 import eu.lenithia.lenroot.features.LenFeatureManager;
 import eu.lenithia.lenroot.other.BStats;
-import eu.lenithia.lenroot.other.ConfigManager;
+import eu.lenithia.lenroot.config.ConfigManager;
 import lombok.Getter;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -36,8 +36,9 @@ public final class LenRoot extends JavaPlugin {
     public void onEnable() {
         // Plugin startup logic
 
+        getLogger().info(" ----------------------------- ");
         getLogger().info("Plugin is starting up!");
-        getLogger().info("THX for trying out LenRoot :)");
+        getLogger().info("Thanks for choosing LenRoot :)");
         getLogger().info(" ----------------------------- ");
 
         // Starting config
@@ -45,6 +46,7 @@ public final class LenRoot extends JavaPlugin {
         configManager.loadConfig();
         configManager.loadMessages();
         configAPI = new ConfigAPI(configManager);
+        getLogger().info("Config loaded!");
 
         // Starting database
         DatabaseManager databaseManager = new DatabaseManager(this);
@@ -57,10 +59,15 @@ public final class LenRoot extends JavaPlugin {
         lenFeatureManager.registerBuiltInFeatures();
 
         // Registering command
-        Objects.requireNonNull(getCommand("len")).setExecutor(new Len(this));
+        CommandManager commandManager = new CommandManager(this);
+        commandManager.registerCommand(new LenCommand(this));
 
         // Starting bStats
         new BStats(this);
+
+        getLogger().info(" ----------------------------- ");
+        getLogger().info("Plugin is fully loaded! ");
+        getLogger().info(" ----------------------------- ");
 
     }
 

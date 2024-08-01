@@ -60,7 +60,9 @@ public abstract class LenFeature {
                 try {
                     enable();
                 } catch (IOException e) {
-                    e.printStackTrace();
+                    this.enabled = false;
+                    lenRoot.getLogger().severe("Failed to enable LenFeature: " + name);
+                    lenRoot.getLogger().severe(e.getMessage());
                 }
             } else {
                 disable();
@@ -83,12 +85,8 @@ public abstract class LenFeature {
      * LenFeature module reload logic. Easiest implementation could be: disable(); enable(); but you can use it for reloading configs or whatever.
      */
     public void reload() {
-        disable();
-        try {
-            enable();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        setEnabled(false, true);
+        setEnabled(true, true);
     }
 
 }

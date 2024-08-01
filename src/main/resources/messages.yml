@@ -6,7 +6,7 @@ LenRoot:
 
 
 
-
+world_guard_no_permission: "~$! [World guard] <red>Hey<gray>, you don't have permission to do that!"
 
 
 

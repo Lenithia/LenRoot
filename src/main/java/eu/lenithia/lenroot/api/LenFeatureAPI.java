@@ -9,6 +9,7 @@ import java.util.List;
 /**
  * Use this to interact with LenFeature modules.
  */
+@SuppressWarnings({"unused"})
 public class LenFeatureAPI {
 
     private final LenFeatureManager lenFeatureManager;
@@ -23,6 +24,13 @@ public class LenFeatureAPI {
      * @return LenFeature object
      */
     public LenFeature getLenFeature(String name) { return lenFeatureManager.getLenFeature(name); }
+
+    /** Check if LenFeature module is registered
+     *
+     * @param name name of the module as String
+     * @return true if the module is registered
+     */
+    public Boolean isLenFeatureRegistered(String name) { return lenFeatureManager.isLenFeatureRegistered(name); }
 
     /** Get all registered modules
      *
