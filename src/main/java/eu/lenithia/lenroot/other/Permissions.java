@@ -2,17 +2,19 @@ package eu.lenithia.lenroot.other;
 
 public enum Permissions {
 
-    LEN_HELP("command.help"),
-    LEN_GUI("command.gui"),
+    LEN_INFO("command.information.info"),
+    LEN_HELP("command.information.help"),
+    LEN_ACTIVE("command.information.active"),
 
-    LEN_LOAD("command.load"),
-    LEN_UNLOAD("command.unload"),
+    LEN_LOAD("command.loading.load"),
+    LEN_UNLOAD("command.loading.unload"),
+    LEN_RELOAD("command.loading.reload"),
+
+    LEN_GUI("command.gui"),
 
     LEN_REGISTER("command.register"),
     LEN_UNREGISTER("command.unregister"),
 
-    LEN_RELOAD("command.reload"),
-    LEN_ACTIVE("command.active"),
 
 
     ;

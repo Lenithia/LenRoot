@@ -5,6 +5,7 @@ import eu.lenithia.lenroot.api.DatabaseAPI;
 import eu.lenithia.lenroot.api.LenFeatureAPI;
 import eu.lenithia.lenroot.commands.CommandManager;
 import eu.lenithia.lenroot.commands.LenCommand;
+import eu.lenithia.lenroot.commands.ModuleParser;
 import eu.lenithia.lenroot.database.DatabaseManager;
 import eu.lenithia.lenroot.features.LenFeatureManager;
 import eu.lenithia.lenroot.other.BStats;
@@ -60,6 +61,7 @@ public final class LenRoot extends JavaPlugin {
 
         // Registering command
         CommandManager commandManager = new CommandManager(this);
+        ModuleParser.setInstance(this);
         commandManager.registerCommand(new LenCommand(this));
 
         // Starting bStats

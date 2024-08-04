@@ -38,6 +38,14 @@ public class LenFeatureAPI {
      */
     public List<LenFeature> getRegisteredLenFeatures() { return  lenFeatureManager.getRegisteredLenFeatures(); }
 
+    /** Get all registered module names
+     *
+     * @return all registered module names
+     */
+    public List<String> getRegisteredLenFeatureNames() { return lenFeatureManager.getRegisteredLenFeatures().stream()
+            .map(LenFeature::getName)
+            .toList(); }
+
     /** Register & load LenFeature modules
      *
      * @param feature Class that extends LenFeature

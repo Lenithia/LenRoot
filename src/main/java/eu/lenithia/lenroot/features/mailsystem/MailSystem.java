@@ -14,7 +14,7 @@ public class MailSystem extends LenFeature {
 
     @Override
     public void enable() {
-
+        lenRoot.getLogger().info("MailSystem has been enabled!");
     }
 
     @Override
